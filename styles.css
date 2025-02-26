@@ -1,0 +1,192 @@
+h1 {
+    color: #0018A4;
+    font-family: Futura;
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 10px;
+    align-items: center;
+    margin: 0;
+
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    /* Spacing between elements */
+    padding: 15px 20px;
+    background-color: white;
+    /* Matches header c
+    border-radius: 8px;
+    /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 20px auto;
+    /* Center it */
+    font-family: Futura;
+    font-size: 22px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.filters label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.filters select {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    font-size: 14px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    background: #CCFFE2;
+    cursor: pointer;
+    transition: 0.3s;
+    appearance: none;
+    /* Removes default browser styles */
+    -webkit-appearance: none;
+    /* Safari fix */
+    -moz-appearance: none;
+    /* Firefox fix */
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 480px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .filters select {
+        width: 60%;
+    }
+}
+
+/* Add a custom dropdown arrow */
+.filters select {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 30px;
+}
+
+.filters select:hover {
+    border: 2px solid #0018A4;
+}
+
+.filters select:focus {
+    border-color: #4b2c5e;
+    outline: none;
+}
+
+
+.recipe-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 0px;
+    max-width: 1200px;
+    margin: auto;
+    justify-content: center;
+}
+
+
+@media (max-width: 1024px) {
+    .recipe-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .recipe-container {
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+
+.recipe-card {
+    width: 100%;
+    width: 280px;
+    /* Fixed card width */
+    height: 580px;
+    /* Fixed card height */
+    background: white;
+    border-radius: 12px;
+    border-color: goldenrod;
+    overflow: hidden;
+    /* Prevents content from spilling out */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 16px;
+}
+
+.recipe-card img {
+    width: 100%;
+    /* Forces image to stay inside the card */
+    height: auto;
+    /* Adjusted height */
+    object-fit: cover;
+    /* Ensures the image fills the space properly */
+    border-radius: 12px;
+}
+
+.recipe-card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.recipe-card hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 10px 0;
+}
+
+.recipe-card p,
+.recipe-card h3,
+.recipe-card li {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    padding: 0px;
+    margin: 0px;
+}
+
+.recipe-card ul {
+    list-style: none;
+    padding-left: 0;
+    /* Remove default padding */
+    margin-left: 0;
+}

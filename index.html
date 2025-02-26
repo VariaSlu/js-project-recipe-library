@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Recipe Library</h1>
+    <div class="filters">
+      <label for="Diet">Diet:</label>
+      <select id="Diet">
+        <option value="all">All</option>
+        <option value="vegan">Vegan</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="gluten-free">Gluten-Free</option>
+        <option value="dairy-free">Dairy-free</option>
+      </select>
+
+      <label for="Cuisine">Cuisine:</label>
+      <select id="Cuisine">
+        <option value="all">All</option>
+        <option value="mediterranean">Mediterranean</option>
+        <option value="middleEastern">Middle Eastern</option>
+        <option value="asian">Asian</option>
+        <option value="italian">Italian</option>
+        <option value="mexican">Mexican</option>
+      </select>
+
+      <label for="sort">Sort by:</label>
+      <select id="sort">
+        <option value="popularity">Popularity</option>
+        <option value="time">Cooking Time</option>
+        <option value="price per serving">Price per seerving</option>
+        <option value="ingredients">Ingredients Count</option>
+      </select>
+    </div>
+  </header>
+
+  <main>
+    <div class="recipe-container">
+      <div class="recipe-card" data-diet="vegan" data-time="30" data-ingredients="5">
+        <img src="/recipeImg.jpg" alt="Recipe image">
+        <h2>Avocado Toast</h2>
+        <hr>
+        <p><strong>Cuisine:</strong> American</p>
+        <p><strong>Time:</strong> 1h 30min</p>
+        <hr>
+        <h3>Ingredients</h3>
+        <ul>
+          <li>6 bone-in chicken breast halves, or 6 chicken thighs and wings, skin-on</li>
+          <li>1/2 teaspoon coarse salt</li>
+          <li>1/2 teaspoon Mrs. Dash seasoning</li>
+          <li>1/4 teaspoon freshly ground black pepper</li>
+        </ul>
+      </div>
+
+      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
+        <img src="/recipeImg.jpg" alt="Recipe image">
+
+        <h2>Vegetable Stir Fry</h2>
+        <p>Healthy and flavorful.</p>
+      </div>
+
+      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
+        <img src="/recipeImg.jpg" alt="Recipe image">
+
+        <h2>Vegetable Stir Fry</h2>
+        <p>Healthy and flavorful.</p>
+      </div>
+
+      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
+        <img src="/recipeImg.jpg" alt="Recipe image">
+
+        <h2>Vegetable Stir Fry</h2>
+        <p>Healthy and flavorful.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
