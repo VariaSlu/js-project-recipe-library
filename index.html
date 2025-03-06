@@ -12,8 +12,8 @@
   <header>
     <h1>Recipe Library</h1>
     <div class="filters">
-      <label for="diet">Diet:</label>
-      <select id="diet">
+      <label for="Diet">Diet:</label>
+      <select id="diet-filter">
         <option value="all">All</option>
         <option value="vegan">Vegan</option>
         <option value="vegetarian">Vegetarian</option>
@@ -22,7 +22,7 @@
       </select>
 
       <label for="Cuisine">Cuisine:</label>
-      <select id="Cuisine">
+      <select id="cuisine-filter">
         <option value="all">All</option>
         <option value="mediterranean">Mediterranean</option>
         <option value="middleEastern">Middle Eastern</option>
@@ -32,18 +32,26 @@
       </select>
 
       <label for="sort">Sort by:</label>
-      <select id="sort">
-        <option value="popularity">Popularity</option>
-        <option value="time">Cooking Time</option>
-        <option value="price per serving">Price per seerving</option>
-        <option value="ingredients">Ingredients Count</option>
+      <select id="sort-options">
+        <option value="none">No sorting</option>
+        <option value="popularity">Popularity (Most Popular First)</option>
+        <option value="time">Cooking Time (Shortest First)</option>
+        <option value="price per serving">Price per seerving (Cheapest first)</option>
+        <option value="ingredients">Ingredients Count (Fewest First)</option>
       </select>
     </div>
 
-    <p id="diet-message">Explore all our delicious recipes 🙂</p>
+    <button id="random-recipe-btn">Get a Random Recipe</button>
+
   </header>
 
   <main>
+
+    <div id="recipe-container"></div>
+
+    <p id="no-results-message" style="display: none;">No recipes match your filters.</p>
+
+    <!--
     <div class="recipe-container">
       <div class="recipe-card" data-diet="vegan" data-time="30" data-ingredients="5">
         <img src="/recipeImg.jpg" alt="Recipe image">
@@ -81,7 +89,7 @@
         <h2>Vegetable Stir Fry</h2>
         <p>Healthy and flavorful.</p>
       </div>
-    </div>
+    </div> -->
   </main>
 
   <script src="script.js"></script>
