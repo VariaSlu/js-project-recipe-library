@@ -10,7 +10,7 @@
 
 <body>
   <header>
-    <h1>Recipe Library</h1>
+    <h1>Recipe Library 🍽️</h1>
     <div class="filters">
       <label for="Diet">Diet:</label>
       <select id="diet-filter">
@@ -32,16 +32,16 @@
       </select>
 
       <label for="sort">Sort by:</label>
-      <select id="sort-options">
-        <option value="none">No sorting</option>
+      <select id="sort-filter">
         <option value="popularity">Popularity (Most Popular First)</option>
         <option value="time">Cooking Time (Shortest First)</option>
-        <option value="price per serving">Price per seerving (Cheapest first)</option>
         <option value="ingredients">Ingredients Count (Fewest First)</option>
       </select>
     </div>
 
+    <p id="diet-message">Explore all our delicious recipes 🙂</p>
     <button id="random-recipe-btn">Get a Random Recipe</button>
+    <button onclick="fetchRecipes()">Fetch New Recipes</button>
 
   </header>
 
@@ -49,9 +49,10 @@
 
     <div id="recipe-container"></div>
 
+    <!--
     <p id="no-results-message" style="display: none;">No recipes match your filters.</p>
 
-    <!--
+    
     <div class="recipe-container">
       <div class="recipe-card" data-diet="vegan" data-time="30" data-ingredients="5">
         <img src="/recipeImg.jpg" alt="Recipe image">
@@ -69,27 +70,9 @@
         </ul>
       </div>
 
-      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
-        <img src="/recipeImg.jpg" alt="Recipe image">
 
-        <h2>Vegetable Stir Fry</h2>
-        <p>Healthy and flavorful.</p>
-      </div>
-
-      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
-        <img src="/recipeImg.jpg" alt="Recipe image">
-
-        <h2>Vegetable Stir Fry</h2>
-        <p>Healthy and flavorful.</p>
-      </div>
-
-      <div class="recipe-card" data-diet="vegetarian" data-time="45" data-ingredients="7">
-        <img src="/recipeImg.jpg" alt="Recipe image">
-
-        <h2>Vegetable Stir Fry</h2>
-        <p>Healthy and flavorful.</p>
-      </div>
     </div> -->
+
   </main>
 
   <script src="script.js"></script>
