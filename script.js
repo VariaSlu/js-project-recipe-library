@@ -47,11 +47,6 @@ const displayRecipes = (recipeList) => {
   recipeContainer.innerHTML = "";
 
 
-  if (recipeList.length === 0) {
-    container.innerHTML = "<p>No recipes match your filters. 🍽️</p>";
-    return;
-  }
-
   recipeList.forEach((recipe) => {
     const recipeCard = `
       <div class="recipe-card">
@@ -71,16 +66,38 @@ const displayRecipes = (recipeList) => {
 
 const filterRecipes = () => {
   const selectedDiet = document.getElementById("diet-filter").value;
+  const selectedCuisine = document.getElementById("cuisine-filter").value;
+  const selectedServings = document.getElementById("servings-filter").value;
+
+  let allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
   let filteredRecipes = allRecipes.filter((recipe) => {
-    if (selectedDiet === "all") return true;
-    return recipe.diets.includes(seleectedDiet)
+    let dietMatch = selectedDiet === "all" || recipe.diets.includes(selectedDiet);
+    let cuisineMatch = selectedCuisine === "all" || (recipe.cuisines && recipe.cuisines.includes(selectedCuisine));
+
+    let servingsMatch = false;
+    if (selectedServings === "all") {
+      servingsMatch = true;
+    } else if (selectedServings === "1") {
+      servingsMatch = recipe.servings === 1;
+    } else if (selectedServings === "2-4") {
+      servingsMatch = recipe.servings >= 2 && recipe.servings <= 4;
+    } else if (selectedServings === "4+") {
+      servingsMatch = recipe.servings > 4;
+    }
+
+    return dietMatch && cuisineMatch && servingsMatch;
   });
 
-  displayRecipes(filterRecipes);
+  displayRecipes(filteredRecipes);
 };
 
+
 document.getElementById("diet-filter").addEventListener("change", filterRecipes);
+document.getElementById("cuisine-filter").addEventListener("change", filterRecipes);
+document.getElementById("servings-filter").addEventListener("change", filterRecipes);
+
+
 
 const sortRecipes = () => {
   const sortBy = document.getElementById("sort-filter").value;
@@ -104,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cachedRecipes = localStorage.getItem("recipes");
   if (cachedRecipes) {
     console.log("using cached recipes.");
-    displayRecipes(JSON.parse(cachedRrecipes));
+    displayRecipes(JSON.parse(cachedRecipes));
   } else {
     fetchRecipes();
 
@@ -133,8 +150,8 @@ if (!localStorage.getItem("recipes")) {
   displayRecipes(exampleResponse.recipes);
 }
 
-// Event Listeners
-document.getElementById("diet-filter").addEventListener("change", filterAndSortRecipes);
+// Event Listeners>
+//document.getElementById("diet-filter").addEventListener("change", filterAndSortRecipes);//
 document.getElementById("sort-filter").addEventListener("change", sortRecipes);
 document.getElementById("random-recipe-btn").addEventListener("click", fetchRecipes);
 
