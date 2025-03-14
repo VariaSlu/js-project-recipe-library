@@ -28,20 +28,6 @@ const fetchRecipes = async () => {
 };
 
 
-
-/*const fetchData = () => {
-  fetch(URL)
-    .then(response => response.json())
-    .then(data => {
-      recipes = data.recipes
-      console.log(recipes)
-    })
-    .catch(error => {
-      console.log(error)
-    })
-};*/
-
-
 const displayRecipes = (recipeList) => {
   const container = document.getElementById("recipe-container");
   recipeContainer.innerHTML = "";
@@ -93,15 +79,9 @@ const filterRecipes = () => {
 };
 
 
-document.getElementById("diet-filter").addEventListener("change", filterRecipes);
-document.getElementById("cuisine-filter").addEventListener("change", filterRecipes);
-document.getElementById("servings-filter").addEventListener("change", filterRecipes);
-
-
-
 const sortRecipes = () => {
   const sortBy = document.getElementById("sort-filter").value;
-  const allRecepies = JSON.parse(localStorage.getItem("recipes")) || [];
+  const allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
   let sortedRecipes = [...allRecipes];
 
@@ -115,6 +95,7 @@ const sortRecipes = () => {
 
   displayRecipes(sortedRecipes);
 };
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -150,8 +131,27 @@ if (!localStorage.getItem("recipes")) {
   displayRecipes(exampleResponse.recipes);
 }
 
-// Event Listeners>
-//document.getElementById("diet-filter").addEventListener("change", filterAndSortRecipes);//
+const getRandomRecipe = () => {
+  const allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
+
+  if (allRecipes.length === 0) {
+    document.getElementById("recipe-container").innerHTML =
+      "No rrecipes availible. Try fetching new ones!";
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * allRecipes.length);
+  const getRandomRecipe = allRecipes[randomIndex];
+
+  document.getElementById("recipe-container").innerHTML = "";
+
+  displayRecipes([getRandomRecipe]);
+};
+
+document.getElementById("random-recipe-btn").addEventListener("click", getRandomRecipe);
 document.getElementById("sort-filter").addEventListener("change", sortRecipes);
-document.getElementById("random-recipe-btn").addEventListener("click", fetchRecipes);
+document.getElementById("diet-filter").addEventListener("change", filterRecipes);
+document.getElementById("cuisine-filter").addEventListener("change", filterRecipes);
+document.getElementById("servings-filter").addEventListener("change", filterRecipes);
+
 
