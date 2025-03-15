@@ -9,8 +9,22 @@ const fetchRecipes = async () => {
     document.getElementById("recipe-container").innerHTML = "Loading rrrrrrecipes...";
 
     const response = await fetch(URL);
-    const data = await response.json();
 
+    if (!response.ok) {
+      if (response.status === 402) {
+        console.warn("API quota rerached! Using saved recipes.");
+        document.getElementById("recipe-container").innerHTML =
+          "API limit reached. Showing saved recipes instead.";
+        displayRecipes(exampleResponse);
+        return;
+      }
+
+      throw new Error(`HTTP error! Sttatus: ${response.status}`);
+    }
+
+
+
+    const data = await response.json();
     console.log("Fetched Data:", data);
 
     if (data.recipes && data.recipes.length > 0) {
@@ -41,7 +55,7 @@ const displayRecipes = (recipeList) => {
         <p><strong>Time:</strong> ${recipe.readyInMinutes} min</p>
         <p><strong>Servings:</strong> ${recipe.servings}</p>
         <p><strong>Price per Serving:</strong> $${(recipe.pricePerServing / 100).toFixed(2)}</p>
-        <p><strong>Cuisine:</strong> ${recipe.cuisines.length > 0 ? recipe.cuisines.join(", ") : "Unknown"}</p>
+        <p><strong>Ingredients:</strong> ${recipe.extendedIngredients.map(ing => ing.name).join(", ")}</p>
         <a href="${recipe.sourceUrl}" target="_blank">View Recipe</a>
       </div>
     `;
@@ -75,6 +89,11 @@ const filterRecipes = () => {
     return dietMatch && cuisineMatch && servingsMatch;
   });
 
+  if (filteredRecipes.length === 0) {
+    recipeContainer.innerHTML = `<p>No rrercipes found matching your filters. Try adjusting the filters.</p>`;
+    return
+  }
+
   displayRecipes(filteredRecipes);
 };
 
@@ -84,6 +103,11 @@ const sortRecipes = () => {
   const allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
   let sortedRecipes = [...allRecipes];
+
+  if (sortedRecipes.length === 0) {
+    recipeContainer.innerHTML = `<p>No recipes available to sort. Try fetching new ones.</p>`;
+    return;
+  }
 
   if (sortBy === "time") {
     sortedRecipes.sort((a, b) => a.readyInMinutes - b.readyInMinutes);
@@ -95,7 +119,6 @@ const sortRecipes = () => {
 
   displayRecipes(sortedRecipes);
 };
-
 
 
 document.addEventListener("DOMContentLoaded", () => {

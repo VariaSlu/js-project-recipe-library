@@ -63,6 +63,26 @@ h1 {
   color: #333;
 }
 
+.buttons {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #ddd;
+  border-radius: 50px;
+  background: #CCFFE2;
+  cursor: pointer;
+  transition: 0.3s;
+  appearance: none;
+  /* Removes default browser styles */
+  -webkit-appearance: none;
+  /* Safari fix */
+  -moz-appearance: none;
+  /* Firefox fix */
+  font-weight: bold;
+  color: #333;
+}
+
 @media (max-width: 480px) {
   .filters {
     flex-direction: column;
@@ -79,7 +99,6 @@ h1 {
   }
 }
 
-/* Add a custom dropdown arrow */
 .filters select {
   background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
@@ -96,6 +115,12 @@ h1 {
   border-color: #4b2c5e;
   outline: none;
 }
+
+.buttons:hover {
+  border: 2px solid #0018A4;
+}
+
+
 
 
 #recipe-container {
@@ -135,6 +160,7 @@ h1 {
 .recipe-card {
   width: 100%;
   width: 280px;
+  font-family: Futura;
   /* Fixed card width */
   height: 580px;
   /* Fixed card height */

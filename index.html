@@ -10,16 +10,16 @@
 
 <body>
   <header>
-    <h1>Recipe Library 🍽️</h1>
+    <h1>Recipe Library</h1>
     <div class="filters">
-      <label for="Diet">Diet:</label>
+      <!--<label for="Diet">Diet:</label>
       <select id="diet-filter">
         <option value="all">All</option>
         <option value="vegan">Vegan</option>
         <option value="vegetarian">Vegetarian</option>
         <option value="gluten-free">Gluten-Free</option>
         <option value="dairy-free">Dairy-free</option>
-      </select>
+      </select> -->
 
       <label for="servings-filter">Servings:</label>
       <select id="servings-filter">
@@ -29,7 +29,7 @@
         <option value="4+">4+ servings</option>
       </select>
 
-      <label for="Cuisine">Cuisine:</label>
+      <!-- <label for="Cuisine">Cuisine:</label>
       <select id="cuisine-filter">
         <option value="all">All</option>
         <option value="mediterranean">Mediterranean</option>
@@ -37,7 +37,7 @@
         <option value="asian">Asian</option>
         <option value="italian">Italian</option>
         <option value="mexican">Mexican</option>
-      </select>
+      </select> -->
 
       <label for="sort">Sort by:</label>
       <select id="sort-filter">
@@ -45,11 +45,13 @@
         <option value="time">Cooking Time (Shortest First)</option>
         <option value="ingredients">Ingredients Count (Fewest First)</option>
       </select>
+
+      <button class="buttons" id="random-recipe-btn">Get a Random Recipe</button>
+      <button class="buttons" onclick="fetchRecipes()">Fetch New Recipes</button>
+
+
     </div>
 
-    <p id="diet-message">Explore all our delicious recipes 🙂</p>
-    <button id="random-recipe-btn">Get a Random Recipe</button>
-    <button onclick="fetchRecipes()">Fetch New Recipes</button>
 
   </header>
 
