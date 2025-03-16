@@ -65,15 +65,11 @@ const displayRecipes = (recipeList) => {
 
 
 const filterRecipes = () => {
-  const selectedDiet = document.getElementById("diet-filter").value;
-  const selectedCuisine = document.getElementById("cuisine-filter").value;
   const selectedServings = document.getElementById("servings-filter").value;
 
   let allRecipes = JSON.parse(localStorage.getItem("recipes")) || [];
 
   let filteredRecipes = allRecipes.filter((recipe) => {
-    let dietMatch = selectedDiet === "all" || recipe.diets.includes(selectedDiet);
-    let cuisineMatch = selectedCuisine === "all" || (recipe.cuisines && recipe.cuisines.includes(selectedCuisine));
 
     let servingsMatch = false;
     if (selectedServings === "all") {
@@ -86,11 +82,11 @@ const filterRecipes = () => {
       servingsMatch = recipe.servings > 4;
     }
 
-    return dietMatch && cuisineMatch && servingsMatch;
+    return servingsMatch;
   });
 
   if (filteredRecipes.length === 0) {
-    recipeContainer.innerHTML = `<p>No rrercipes found matching your filters. Try adjusting the filters.</p>`;
+    recipeContainer.innerHTML = `<p>No rrercipes found matching your filters. Try adjusting the filters.🍳</p>`;
     return
   }
 
@@ -173,8 +169,6 @@ const getRandomRecipe = () => {
 
 document.getElementById("random-recipe-btn").addEventListener("click", getRandomRecipe);
 document.getElementById("sort-filter").addEventListener("change", sortRecipes);
-document.getElementById("diet-filter").addEventListener("change", filterRecipes);
-document.getElementById("cuisine-filter").addEventListener("change", filterRecipes);
 document.getElementById("servings-filter").addEventListener("change", filterRecipes);
 
 

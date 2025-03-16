@@ -18,15 +18,8 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 15px;
-  /* Spacing between elements */
   padding: 15px 20px;
   background-color: white;
-  /* Matches header c
-    border-radius: 8px;
-    /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    margin: 20px auto;
-    /* Center it */
   font-family: Futura;
   font-size: 22px;
 }
@@ -54,11 +47,8 @@ h1 {
   cursor: pointer;
   transition: 0.3s;
   appearance: none;
-  /* Removes default browser styles */
   -webkit-appearance: none;
-  /* Safari fix */
   -moz-appearance: none;
-  /* Firefox fix */
   font-weight: bold;
   color: #333;
 }
@@ -74,16 +64,14 @@ h1 {
   cursor: pointer;
   transition: 0.3s;
   appearance: none;
-  /* Removes default browser styles */
   -webkit-appearance: none;
-  /* Safari fix */
   -moz-appearance: none;
-  /* Firefox fix */
   font-weight: bold;
   color: #333;
 }
 
 @media (max-width: 480px) {
+
   .filters {
     flex-direction: column;
     align-items: stretch;
@@ -94,7 +82,8 @@ h1 {
     width: 100%;
   }
 
-  .filters select {
+  .filters select,
+  .buttons {
     width: 60%;
   }
 }
@@ -159,16 +148,13 @@ h1 {
 
 .recipe-card {
   width: 100%;
-  width: 280px;
+  width: 220px;
   font-family: Futura;
-  /* Fixed card width */
   height: 580px;
-  /* Fixed card height */
-  background: white;
+  ] background: white;
   border-radius: 12px;
   border-color: goldenrod;
   overflow: hidden;
-  /* Prevents content from spilling out */
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   text-align: left;
   display: flex;
@@ -187,14 +173,7 @@ h1 {
 .recipe-card h2 {
   font-size: 20px;
   font-weight: bold;
-  margin: 10px 0px;
-}
-
-.recipe-card hr {
-  border: none;
-  height: 1px;
-  background: #ddd;
-  margin: 10px 0;
+  margin: 6px 0px;
 }
 
 .recipe-card p,
@@ -203,11 +182,31 @@ h1 {
   font-size: 14px;
   line-height: 1.5;
   color: #333;
+  margin: 2px 0;
+  line-height: 1.5;
+}
+
+.recipe-card p::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 4px;
+}
+
+.recipe-card p:last-child::after {
+  display: none;
 }
 
 .recipe-card ul {
   list-style: none;
   padding-left: 0;
-  /* Remove default padding */
   margin-left: 0;
+}
+
+.recipe-card:hover {
+  border: 2px solid #0018A4;
+  box-shadow: 0px 0px 40px 0px rgba(0, 24, 164, 0.40);
+  transform: translateY(-5px);
 }
