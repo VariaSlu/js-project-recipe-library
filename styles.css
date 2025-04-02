@@ -151,9 +151,9 @@ h1 {
   width: 220px;
   font-family: Futura;
   height: 580px;
-  ] background: white;
+  background: white;
   border-radius: 12px;
-  border-color: goldenrod;
+  border: 2px solid transparent;
   overflow: hidden;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
   text-align: left;
@@ -206,7 +206,7 @@ h1 {
 }
 
 .recipe-card:hover {
-  border: 2px solid #0018A4;
+  border-color: #0018A4;
   box-shadow: 0px 0px 40px 0px rgba(0, 24, 164, 0.40);
   transform: translateY(-5px);
 }
